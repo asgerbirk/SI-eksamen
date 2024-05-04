@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>SSE - server-sent Events</h1>
+
+    <p>Status:</p>
+    <div id="server-sent_status"></div>
+
+    <p>Time</p>
+    <div id="server-sent_time"></div>
+
+    <script>
+      const serverSentStatusDiv = document.getElementById("server-sent_status");
+      const serverSentTimeDiv = document.getElementById("server-sent_time");
+
+      // EventSource is a built-in object in the browser, which is used to open a connection to an event stream
+      const eventSource = new EventSource("/synchronize-time");
+
+      //addEventListener is used to listen to the events
+      eventSource.addEventListener("message", (event) => {
+        serverSentTimeDiv.textContent = event.data;
+      });
+
+      //addEventListener is used to listen to the events
+      eventSource.addEventListener("open", (event) => {
+        serverSentStatusDiv.textContent = "Connected";
+      });
+
+      //addEventListener is used to listen to the events.
+      eventSource.addEventListener("error", (event) => {
+        //readyState is a property of the EventSource object, which returns the state of the connection.
+        if (event.target.readyState === EventSource.CLOSED) {
+          serverSentStatusDiv.textContent = "Connection was closed";
+        } else if (event.target.readyState === EventSource.CONNECTING) {
+          serverSentStatusDiv.textContent = "Connecting...";
+        } else {
+          serverSentStatusDiv.textContent = "Error";
+        }
+      });
+    </script>
+  </body>
+</html>
