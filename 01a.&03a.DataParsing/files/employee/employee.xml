@@ -1,0 +1,6 @@
+<Employee>
+    <Name>John Doe</Name>
+    <Position>Software Developer</Position>
+    <Age>30</Age>
+    <Email>johndoe@example.com</Email>
+</Employee>

@@ -8,14 +8,13 @@ import {
 } from "./readAndParseFiles.js";
 const app = express();
 
-const filePath = "../me.";
+const filePath = "../files/me/me.";
 
 app.get("/json", (req, res) => {
   const jsonFilePath = filePath + "json";
   const jsonData = readJSON(jsonFilePath);
   res.send({ data: jsonData });
 });
-
 app.get("/yaml", (req, res) => {
   const yamlFilePath = filePath + "yaml";
   const yamlData = readYAML(yamlFilePath);

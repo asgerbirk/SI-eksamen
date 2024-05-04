@@ -10,7 +10,8 @@ from readAndParseFiles import (
 
 app = FastAPI()
 
-filePath = "../me."
+
+filePath = "../files/employee/employee."
 
 
 @app.get("/txt")
