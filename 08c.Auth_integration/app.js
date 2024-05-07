@@ -1,8 +1,8 @@
 import express from "express";
 import "dotenv/config";
-import pkg from "express-openid-connect"; // Import the entire package
+import pkg from "express-openid-connect";
 
-const { auth, requiresAuth } = pkg; // Destructure the needed methods
+const { auth, requiresAuth } = pkg;
 
 const config = {
   authRequired: false,
